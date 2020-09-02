@@ -1,7 +1,7 @@
 function P = Parameters(qMobile)
 % Parameters   Define a structure with fields for each model parameter
 %
-%   Copyright (c) 2016 United States Government as represented by the
+%   Copyright (c)Â 2016 United States Government as represented by the
 %   Administrator of the National Aeronautics and Space Administration.
 %   No copyright is claimed in the United States under Title 17, U.S.
 %   Code. All Other Rights Reserved.
@@ -109,7 +109,7 @@ P.An11 = 0;
 P.An12 = 0;
 
 % End of discharge voltage threshold
-P.VEOD = 3.0;
+P.VEOD = 2.6;
 
 % Default initial conditions (fully charged)
 P.x0.qpS = P.qpSMin;
@@ -119,7 +119,7 @@ P.x0.qnB = P.qnBMax;
 P.x0.Vo = 0;
 P.x0.Vsn = 0;
 P.x0.Vsp = 0;
-P.x0.Tb = 292.1;            % in K, about 18.95 C
+P.x0.Tb = 300;            % in K, about 18.95 C
 
 % Process noise variances
 P.v.qpS = 1e-5;

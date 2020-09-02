@@ -1,10 +1,13 @@
-function [Tb,Vo,Vsn,Vsp,qnS,qpS,xnS,xpS,Ven,Vep,V] = CurrentState(parameters,t,X,U)
+function [Tb,Vo,Vsn,Vsp,qnB,qnS,qpB,qpS,xnS,xpS,Ven,Vep,V] = CurrentState(parameters,t,X,U)
 Tb = X(1,:);
 Vo = X(2,:);
 Vsn = X(3,:);
 Vsp = X(4,:);
+qnB = X(5,:);
 qnS = X(6,:);
+qpB = X(7,:);
 qpS = X(8,:);
+
 
 xnS = qnS./parameters.qSMax;
 xpS = qpS./parameters.qSMax;
