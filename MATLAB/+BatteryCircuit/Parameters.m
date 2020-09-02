@@ -47,10 +47,10 @@ P.Rcp2 = 37.223;
 P.Ccp = 14.8223;
 
 % Temperature parameters
-P.Ta = 18.95;      % ambient temperature (deg C)
-P.Jt = 800;
-P.ha = 0.5;        % heat transfer coefficient, ambient
-P.hcp = 19;
+P.Ta = 27; %18.95;      % ambient temperature (deg C)
+P.Jt = 1000; %800;
+P.ha = 0.8;  %0.5      % heat transfer coefficient, ambient % Can be 5. 
+P.hcp = 10; %19;
 P.hcs = 1;
 
 % End of discharge voltage threshold
