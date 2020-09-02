@@ -1,7 +1,7 @@
 function P = Parameters
 % Parameters   Define a structure with fields for each model parameter
 %
-%   Copyright (c) 2016 United States Government as represented by the
+%   Copyright (c)Â 2016 United States Government as represented by the
 %   Administrator of the National Aeronautics and Space Administration.
 %   No copyright is claimed in the United States under Title 17, U.S.
 %   Code. All Other Rights Reserved.
@@ -47,10 +47,10 @@ P.Rcp2 = 37.223;
 P.Ccp = 14.8223;
 
 % Temperature parameters
-P.Ta = 27; %18.95;      % ambient temperature (deg C)
-P.Jt = 1000; %800;
-P.ha = 0.8;  %0.5      % heat transfer coefficient, ambient % Can be 5. 
-P.hcp = 10; %19;
+P.Ta = 18.95;      % ambient temperature (deg C)
+P.Jt = 800;
+P.ha = 0.5;        % heat transfer coefficient, ambient
+P.hcp = 19;
 P.hcs = 1;
 
 % End of discharge voltage threshold
