@@ -37,7 +37,7 @@ classdef Model < handle
 %
 % See also Model.PrognosticsModel
 %
-% Copyright (c) 2016 United States Government as represented by the
+% Copyright (c)Â 2016 United States Government as represented by the
 % Administrator of the National Aeronautics and Space Administration.
 % No copyright is claimed in the United States under Title 17, U.S.
 % Code. All Other Rights Reserved.
@@ -50,7 +50,7 @@ classdef Model < handle
         inputEqnHandle;       % Handle to input equation
         outputEqnHandle;      % Handle to output equation
         initializeEqnHandle;  % Handle to initialize equation
-        
+        currentStateHandle;   % Handle to store current model variables
         states;               % Struct array of states
         inputs;               % Struct array of inputs
         outputs;              % Struct array of ouputs
@@ -72,43 +72,15 @@ classdef Model < handle
         % Constructor - arguments are string, value pairs. The strings must
         % correspond to property names.
         function M = Model(varargin)
-            % Model   Constructor
-            %   Contruct a Model object given various arguments. The
-            %   arguments are string, value pairs, e.g.,
-            %   Model('stateEqnHandle',stateEqn,...).
-            %   The following arguments are required:
-            %   - stateEqnHandle: function handle to state equation
-            %   - outputEqnHandle: function handle to output equation
-            %   - states: struct array of state variables
-            %   - inputs: struct array of input variables
-            %   - outputs: struct array of output variables
-            %   - P: model parameters structure
-            %   - sampleTime: default model sample time for simulation
-            %
-            % The struct arrays for states must include fields 'name',
-            % 'units', 'Noise', 'x0', and 'ylim'. The 'units' field is only
-            % required if using the print methods, and the 'ylim' field is
-            % only required if using the plot methods.
-            %
-            % The function handles must each take as the first two inputs
-            % the model parameters structure and the time. The remaining
-            % arguments are as follows:
-            %   - stateEqnHandle: x,u,noise,dt
-            %   - outputEqnHandle: x,u,noise
-            %   - inputEqnHandle: (optional) input parameters
-            %
-            % The "input parameters" is a vector of values that are used to
-            % define what the model input should be at a given time. In
-            % this way, input equations can be defined in many arbitrary
-            % ways.
-            
-            % Create a structure from the string, value pairs
             args = struct(varargin{:});
-            
             % Set object properties from the function arguments
             properties = fieldnames(args);
             for i=1:length(properties)
-                M.(properties{i}) = args.(properties{i});
+                try
+                    M.(properties{i}) = args.(properties{i});
+                catch
+                   disp(' ') 
+                end
             end
             
             % Check for required properties
@@ -301,7 +273,7 @@ classdef Model < handle
             [x0, u0, z0] = M.getDefaultInitialization(0);
             if ~isempty(options.x0)
                 x0 = options.x0;
-                z0 = M.outputEqn(options.t0,x0,u0,options.enableSensorNoise*M.generateSensorNoise());
+                z0 = M.outputEqn(t0,x0,u0,options.enableSensorNoise*M.generateSensorNoise());
             end
             
             % Preallocate output data: columns represent times
