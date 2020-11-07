@@ -23,6 +23,13 @@ function XNew = StateEqn(parameters,t,X,U,N,dt)
 % qpB = X(7,:);
 % qpS = X(8,:);
 
+XNew = OriginalModel(parameters,t,X,U,N,dt);
+
+
+
+
+
+function XNew = OriginalModel(parameters,t,X,U,N,dt)
 % Extract inputs
 P = U(1,:);
 
@@ -65,8 +72,8 @@ voltage_eta = U - V;
 % Pkin = i.*etakin;
 % Pohm = i.*VoNominal;
 h = 5;
-mC = 37.04; % 0.045kg × 823J/kg/C = 37.04 kg/m2/(K-s^2)
-tau = 50; % 0.045kg × 823J/kg/C/8.84cm2/5W/K-m2 = 8379 s
+mC = 37.04; % 0.045kg ï¿½ 823J/kg/C = 37.04 kg/m2/(K-s^2)
+tau = 50; % 0.045kg ï¿½ 823J/kg/C/8.84cm2/5W/K-m2 = 8379 s
 Rshort = 1;
 % Ptherm + 
 % Tbdot = (Ptherm + Pohm + Pkin + h.*(parameters.x0.Tb - Tb))./(7.5e6*0.35); %- i.*T.*deltaU./deltaT;
@@ -86,13 +93,9 @@ XNew(8,:) = qpS + qpSdot*dt;
 % Add process noise
 XNew = XNew + dt*N;
 
+function XNew = LiPoModel(parameters,t,X,U,N,dt)
 
-
-
-
-
-
-
+error("Not implemented");
 
 
 
