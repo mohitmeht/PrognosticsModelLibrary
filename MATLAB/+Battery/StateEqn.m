@@ -53,7 +53,7 @@ Jn0 = parameters.kn.*(1-xSn).^parameters.alpha.*(xSn).^parameters.alpha;
 qdotDiffusionBSp = (CpBulk-CpSurface)./parameters.tDiffusion;
 Jp0 = parameters.kp.*(1-xSp).^parameters.alpha.*(xSp).^parameters.alpha;
 qpBdot = - qdotDiffusionBSp;
-i = P; % P./V; Assuming constant current
+i = P;%P./V; %Assuming constant current
 qpSdot = i + qdotDiffusionBSp;
 Jn = i./parameters.Sn;
 VoNominal = i.*parameters.Ro;
@@ -73,7 +73,7 @@ voltage_eta = U - V;
 % Pohm = i.*VoNominal;
 h = 5;
 mC = 37.04; % 0.045kg � 823J/kg/C = 37.04 kg/m2/(K-s^2)
-tau = 50; % 0.045kg � 823J/kg/C/8.84cm2/5W/K-m2 = 8379 s
+tau = 100; % 0.045kg � 823J/kg/C/8.84cm2/5W/K-m2 = 8379 s
 Rshort = 1;
 % Ptherm + 
 % Tbdot = (Ptherm + Pohm + Pkin + h.*(parameters.x0.Tb - Tb))./(7.5e6*0.35); %- i.*T.*deltaU./deltaT;
