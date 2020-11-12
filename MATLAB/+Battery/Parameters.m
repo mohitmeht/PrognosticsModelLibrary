@@ -1,8 +1,8 @@
 function P = Parameters(qMobile)
     if exist('qMobile','var')
-        P = Original(qMobile);
+        P = Chetan_tattu(qMobile);
     else
-        P = Original();
+        P = Chetan_tattu();
     end
 
 function P = Original(qMobile)
@@ -289,7 +289,7 @@ P.n.Tbm = 1e-3;
 
 
 
-function P = Modified_Chetan(qMobile)
+function P = Chetan_tattu(qMobile)
 % Parameters   Define a structure with fields for each model parameter
 %
 %   Copyright (c) 2016 United States Government as represented by the
@@ -329,7 +329,7 @@ P.Ro = 0.117215;          % for Ohmic drop (current collector resistances plus e
 
 % Constants of nature
 P.R = 8.3144621;          % universal gas constant, J/K/mol
-P.F = 96487;              % Faraday's constant, C/mol
+P.F = 96487;              % Faradays constant, C/mol
 
 % Li-ion parameters
 P.alpha = 0.5;              % anodic/cathodic electrochemical transfer coefficient
@@ -358,34 +358,34 @@ P.qSMax = P.qMax*P.VolS/P.Vol;       % max charge at surface (pos and neg)
 P.qBMax = P.qMax*P.VolB/P.Vol;       % max charge at bulk (pos and neg)
 
 % time constants
-P.tDiffusion = 78153.1;
-P.to = 141.307./10;%P.to = 6.08671;      % for Ohmic voltage
-P.tsn = 176163;
-P.tsp = 2.37718;
-P.Sn = 1.52326e-05;
-P.Sp = 0.0205603;
-P.kn = 0.00458297;
-P.kp = 2684390;
+P.tDiffusion	= 79365.4;
+P.to			= 145.831;	% for Ohmic voltage
+P.tsn			= 57776.6;
+P.tsp			= 1.68236;
+P.Sn			= 4.82013e-06;
+P.Sp			= 0.023179;
+P.kn			= 0.0057574;
+P.kp			= 3.28318e+06;
 
 % Redlich-Kister parameters (positive electrode)
-P.U0p = 4.03;
-P.Ap0 = -31593.7;
-P.Ap1 = 0.106747;
-P.Ap2 = 24606.4;
-P.Ap3 = -78561.9;
-P.Ap4 = 13317.9;
-P.Ap5 = 307387;
-P.Ap6 = 84916.1;
-P.Ap7 = -1.07469e+06;
-P.Ap8 = 2285.04;
-P.Ap9 = 990894;
-P.Ap10 = 283920;
-P.Ap11 = -161513;
-P.Ap12 = -469218;
+P.U0p			= 24.4559;
+P.Ap0			= -269531;
+P.Ap1			= 0.4040;
+P.Ap2 			= 168533;
+P.Ap3			= -563091;
+P.Ap4			= 63508;
+P.Ap5			= 2561180;
+P.Ap6			= 200182;
+P.Ap7			= -7825330;
+P.Ap8			= 1.2296e+04;
+P.Ap9			= 6861830;
+P.Ap10			= 2028170;
+P.Ap11			= -990957;
+P.Ap12			= -2602390;
 
 % Redlich-Kister parameters (negative electrode)
-P.U0n = 0.01;
-P.An0 = 86.19;
+P.U0n = 0.0522;
+P.An0 = 422.3000;
 P.An1 = 0;
 P.An2 = 0;
 P.An3 = 0;
@@ -400,7 +400,7 @@ P.An11 = 0;
 P.An12 = 0;
 
 % End of discharge voltage threshold
-P.VEOD = 2.6;
+P.VEOD = 22;
 
 % Default initial conditions (fully charged)
 P.x0.qpS = P.qpSMin;
